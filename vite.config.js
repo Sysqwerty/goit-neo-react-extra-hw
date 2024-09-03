@@ -15,6 +15,7 @@ export default defineConfig({
       '@': '/src',
       '@components': '/src/components',
       '@redux': '/src/redux',
+      '@pages': '/src/pages/',
     },
   },
 });

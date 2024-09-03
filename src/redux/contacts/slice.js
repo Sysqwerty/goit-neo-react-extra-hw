@@ -1,7 +1,7 @@
-import { toast } from 'react-toastify';
-import { createSelector, createSlice } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './contactsOps';
-import { selectNameFilter } from './filtersSlice';
+import toast from 'react-hot-toast';
+import { createSlice } from '@reduxjs/toolkit';
+import { logOut } from '@redux/auth/operations';
+import { fetchContacts, addContact, deleteContact } from './operations';
 
 const handlePending = state => {
   state.loading = true;
@@ -50,19 +50,13 @@ const contactsSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected)
+      .addCase(logOut.fulfilled, state => {
+        state.items = [];
+        state.error = null;
+        state.loading = false;
+      });
   },
 });
 
 export const contactsReducer = contactsSlice.reducer;
-export const selectContacts = state => state.contacts.items;
-export const selectLoading = state => state.contacts.loading;
-
-export const selectFilteredContacts = createSelector(
-  [selectContacts, selectNameFilter],
-  (contacts, filter) => {
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
-  }
-);
