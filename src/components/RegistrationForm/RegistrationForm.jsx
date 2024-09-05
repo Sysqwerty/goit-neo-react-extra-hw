@@ -56,19 +56,29 @@ const RegistrationForm = () => {
       <Form className={css.form}>
         <div className={css.field}>
           <label htmlFor={nameId}>Name</label>
-          <Field type="text" name="name" id={nameId} />
+          <Field type="text" name="name" id={nameId} placeholder="John Doe" />
           <ErrorMessage className={css.error} name="name" component="span" />
         </div>
 
         <div className={css.field}>
           <label htmlFor={emailId}>Email</label>
-          <Field type="email" name="email" id={emailId} />
+          <Field
+            type="email"
+            name="email"
+            id={emailId}
+            placeholder="test@gmail"
+          />
           <ErrorMessage className={css.error} name="email" component="span" />
         </div>
 
         <div className={css.field}>
           <label htmlFor={passwordId}>Password</label>
-          <Field type="password" name="password" id={passwordId} />
+          <Field
+            type="password"
+            name="password"
+            id={passwordId}
+            placeholder="********"
+          />
           <ErrorMessage
             className={css.error}
             name="password"

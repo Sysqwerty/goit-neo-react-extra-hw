@@ -63,7 +63,7 @@ const LoginForm = () => {
             type="password"
             name="password"
             id={passwordId}
-            placeholder="strong password"
+            placeholder="********"
           />
           <ErrorMessage
             className={css.error}
