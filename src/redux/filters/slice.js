@@ -1,12 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { logOut } from '@redux/auth/operations';
 
 const filtersSlice = createSlice({
   name: 'filters',
-  initialState: { name: '' },
+  initialState: { search: '' },
   reducers: {
     changeFilter(state, action) {
-      state.name = action.payload;
+      state.search = action.payload;
     },
+  },
+  extraReducers: builder => {
+    builder.addCase(logOut.fulfilled, state => {
+      state.search = '';
+    });
   },
 });
 

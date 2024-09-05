@@ -4,8 +4,15 @@
   padding: 12px;
   font-weight: 700;
   color: #2a363b;
+  transition: 0.3s;
+  border-bottom: 2px solid transparent;
 }
 
 .link.active {
-  color: #e84a5f;
+  color: #2e7d32;
+}
+
+.link:hover {
+  color: #2e7d32;
+  border-bottom: 2px solid #2e7d32;
 }

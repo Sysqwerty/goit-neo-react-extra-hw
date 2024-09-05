@@ -6,10 +6,21 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   gap: 10px;
+  background-color: #e7eced;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) inset;
 }
 
 .contactData {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
+}
+
+.buttons {
+  justify-content: space-between;
+}
+
+.icon {
+  width: 15px;
+  height: 15px;
 }

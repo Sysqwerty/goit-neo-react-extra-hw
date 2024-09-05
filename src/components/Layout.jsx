@@ -1,9 +1,10 @@
 import { Suspense } from 'react';
 import AppBar from '@components/AppBar/AppBar';
+import css from './Layout.module.css';
 
 const Layout = ({ children }) => {
   return (
-    <div style={{ maxWidth: 960, margin: '0 auto', padding: '0 16px' }}>
+    <div className={css.layout}>
       <AppBar />
       <Suspense fallback={null}>{children}</Suspense>
     </div>

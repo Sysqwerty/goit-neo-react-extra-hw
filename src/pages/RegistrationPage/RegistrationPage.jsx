@@ -3,10 +3,12 @@ import RegistrationForm from '@components/RegistrationForm/RegistrationForm';
 
 const RegisterPage = () => {
   return (
-    <div>
+    <>
       <DocumentTitle>Registration</DocumentTitle>
-      <RegistrationForm />
-    </div>
+      <main>
+        <RegistrationForm />
+      </main>
+    </>
   );
 };
 

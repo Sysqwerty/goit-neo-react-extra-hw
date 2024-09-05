@@ -1,7 +1,11 @@
-import toast from 'react-hot-toast';
 import { createSlice } from '@reduxjs/toolkit';
 import { logOut } from '@redux/auth/operations';
-import { fetchContacts, addContact, deleteContact } from './operations';
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+  updateContact,
+} from './operations';
 
 const handlePending = state => {
   state.loading = true;
@@ -10,12 +14,6 @@ const handlePending = state => {
 const handleRejected = (state, action) => {
   state.loading = false;
   state.error = action.payload;
-  toast.error(`🦄 ${action.payload}`, {
-    position: 'top-right',
-    autoClose: 3000,
-    closeOnClick: true,
-    theme: 'colored',
-  });
 };
 
 const contactsSlice = createSlice({
@@ -51,6 +49,16 @@ const contactsSlice = createSlice({
         state.items.splice(index, 1);
       })
       .addCase(deleteContact.rejected, handleRejected)
+      .addCase(updateContact.pending, handlePending)
+      .addCase(updateContact.fulfilled, (state, action) => {
+        state.loading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          contact => contact.id === action.payload.id
+        );
+        state.items[index] = action.payload;
+      })
+      .addCase(updateContact.rejected, handleRejected)
       .addCase(logOut.fulfilled, state => {
         state.items = [];
         state.error = null;
