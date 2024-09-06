@@ -66,7 +66,7 @@ const RegistrationForm = () => {
             type="email"
             name="email"
             id={emailId}
-            placeholder="test@gmail"
+            placeholder="test@gmail.com"
           />
           <ErrorMessage className={css.error} name="email" component="span" />
         </div>
